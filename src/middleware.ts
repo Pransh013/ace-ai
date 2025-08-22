@@ -1,7 +1,8 @@
 import arcjet, { detectBot, shield, slidingWindow } from "@arcjet/next";
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-import { env } from "./app/data/env/server";
+
+import { env } from "./env/server";
 
 const aj = arcjet({
   key: env.ARCJET_KEY,
