@@ -1,9 +1,10 @@
 import arcjet, { detectBot, shield, slidingWindow } from "@arcjet/next";
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
+import { env } from "./app/data/env/server";
 
 const aj = arcjet({
-  key: process.env.ARCJET_KEY!,
+  key: env.ARCJET_KEY,
   rules: [
     shield({ mode: "LIVE" }),
     detectBot({
