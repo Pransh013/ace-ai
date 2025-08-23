@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
       case "user.deleted":
         if (!event.data.id)
           return NextResponse.json(
-            { mesaage: "No userId found" },
+            { message: "No userId found" },
             { status: 404 }
           );
 
