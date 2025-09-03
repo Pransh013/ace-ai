@@ -12,7 +12,6 @@ export async function upsertUser(user: typeof UserTable.$inferInsert) {
       target: [UserTable.id],
       set: user,
     });
-
   revalidateUserCache(user.id);
 }
 

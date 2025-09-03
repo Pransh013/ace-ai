@@ -14,16 +14,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { UserDropdownData } from "../types";
 
-export function UserDropdown({
-  name,
-  email,
-  imageUrl,
-}: {
-  name: string;
-  email: string;
-  imageUrl: string;
-}) {
+export function UserDropdown({ name, email, imageUrl }: UserDropdownData) {
   const { openUserProfile } = useClerk();
   return (
     <DropdownMenu>

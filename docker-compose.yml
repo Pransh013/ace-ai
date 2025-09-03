@@ -3,7 +3,7 @@ services:
     image: postgres:17.0
     container_name: ace-ai-postgres
     ports:
-      - "${DB_PORT}:5432"
+      - "5432: ${DB_PORT}"
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
