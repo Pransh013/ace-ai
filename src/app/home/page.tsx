@@ -72,9 +72,6 @@ async function JobInfos() {
                 <Badge variant="outline">
                   {formatExperienceLevel(job.experienceLevel)}
                 </Badge>
-                <Badge variant="outline">
-                  {formatExperienceLevel(job.experienceLevel)}
-                </Badge>
                 {job.title && <Badge variant="outline">{job.title}</Badge>}
               </CardFooter>
             </Card>

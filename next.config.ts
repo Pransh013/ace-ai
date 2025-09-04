@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   experimental: {
     useCache: true,
   },
+  images: {
+    remotePatterns: [{ hostname: "assets.aceternity.com", protocol: "https" }],
+  },
 };
 
 export default nextConfig;
