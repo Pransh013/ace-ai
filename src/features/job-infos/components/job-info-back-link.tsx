@@ -9,23 +9,26 @@ import { JobInfoTable } from "@/drizzle/schema";
 import { BackLink } from "@/components/back-link";
 
 export function JobInfoBackLink({
-  id,
+  jobInfoId,
   className,
 }: {
-  id: string;
+  jobInfoId: string;
   className?: string;
 }) {
   return (
-    <BackLink href={`/home/job-infos/${id}`} className={cn("mb-4", className)}>
+    <BackLink
+      href={`/home/job-infos/${jobInfoId}`}
+      className={cn("mb-4", className)}
+    >
       <Suspense fallback="Job Info">
-        <JobName id={id} />
+        <JobName jobInfoId={jobInfoId} />
       </Suspense>
     </BackLink>
   );
 }
 
-async function JobName({ id }: { id: string }) {
-  const jobInfo = await getJobInfo(id);
+async function JobName({ jobInfoId }: { jobInfoId: string }) {
+  const jobInfo = await getJobInfo(jobInfoId);
   return jobInfo?.name ?? "Job Info";
 }
 

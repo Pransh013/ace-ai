@@ -15,19 +15,19 @@ import { JobInfoBackLink } from "@/features/job-infos/components/job-info-back-l
 export default async function EditJobInfoPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ jobInfoId: string }>;
 }) {
-  const { id } = await params;
+  const { jobInfoId } = await params;
 
   const { userId, redirectToSignIn } = await getCurrentUser();
   if (!userId) return redirectToSignIn();
 
-  const jobInfo = await getJobInfo(id, userId);
+  const jobInfo = await getJobInfo(jobInfoId, userId);
   if (!jobInfo) return notFound();
 
   return (
     <div className="container my-4 lg:my-6 space-y-4">
-      <JobInfoBackLink id={id} />
+      <JobInfoBackLink jobInfoId={jobInfoId} />
       <h1 className="text-2xl md:text-3xl lg:text-4xl font-medium">
         Edit Job Info
       </h1>
@@ -36,7 +36,7 @@ export default async function EditJobInfoPage({
           <Suspense
             fallback={<Loader2Icon className="size-24 animate-spin mx-auto" />}
           >
-            <SuspendedForm id={id} />
+            <SuspendedForm jobInfoId={jobInfoId} />
           </Suspense>
         </CardContent>
       </Card>
@@ -44,11 +44,11 @@ export default async function EditJobInfoPage({
   );
 }
 
-async function SuspendedForm({ id }: { id: string }) {
+async function SuspendedForm({ jobInfoId }: { jobInfoId: string }) {
   const { userId, redirectToSignIn } = await getCurrentUser();
   if (!userId) return redirectToSignIn();
 
-  const jobInfo = await getJobInfo(id, userId);
+  const jobInfo = await getJobInfo(jobInfoId, userId);
   if (!jobInfo) return notFound();
 
   return <JobInfoForm jobInfo={jobInfo} />;

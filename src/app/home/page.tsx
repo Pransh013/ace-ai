@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { desc, eq } from "drizzle-orm";
-import { cacheTag } from "next/dist/server/use-cache/cache-tag";
 import { Loader2Icon, PlusIcon } from "lucide-react";
+import { cacheTag } from "next/dist/server/use-cache/cache-tag";
 
 import {
   Card,
@@ -12,12 +12,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { db } from "@/drizzle/db";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { JobInfoTable } from "@/drizzle/schema";
-import { JobInfoForm } from "@/features/job-infos/components/job-info-form";
 import { getJobInfoUserTag } from "@/features/job-infos/db-cache";
 import { getCurrentUser } from "@/services/clerk/lib/get-current-user";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { JobInfoForm } from "@/features/job-infos/components/job-info-form";
 import { formatExperienceLevel } from "@/features/job-infos/lib/formatters";
 
 export default function HomePage() {

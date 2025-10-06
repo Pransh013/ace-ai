@@ -49,15 +49,15 @@ const options = [
 export default async function JobInfoPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ jobInfoId: string }>;
 }) {
-  const { id } = await params;
+  const { jobInfoId } = await params;
 
   const jobInfo = getCurrentUser().then(
     async ({ userId, redirectToSignIn }) => {
       if (!userId) return redirectToSignIn();
 
-      const jobInfo = await getJobInfo(id, userId);
+      const jobInfo = await getJobInfo(jobInfoId, userId);
       if (!jobInfo) return notFound();
 
       return jobInfo;
@@ -104,7 +104,7 @@ export default async function JobInfoPage({
           {options.map((option) => (
             <Link
               key={option.href}
-              href={`/home/job-infos/${id}/${option.href}`}
+              href={`/home/job-infos/${jobInfoId}/${option.href}`}
               className="hover:scale-[1.01] transition-[transform_opacity]"
             >
               <Card className="h-full gap-4">
